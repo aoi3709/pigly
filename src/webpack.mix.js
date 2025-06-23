@@ -12,6 +12,13 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+    .css('resources/css/common.css', 'public/css')
+    .css('resources/css/login.css', 'public/css')
+    .css('resources/css/register.css', 'public/css')
+    .css('resources/css/weight_logs_index.css', 'public/css')
+    .css('resources/css/weight_logs_create.css', 'public/css')
+    .css('resources/css/weight_logs_edit.css', 'public/css')
+    .css('resources/css/weight_logs_goal_setting.css', 'public/css')
+    .options({
+        processCssUrls: false // CSS内のURLパスを処理しない (必要な場合のみ)
+    });

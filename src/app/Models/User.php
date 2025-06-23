@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\WeightTarget;
+use App\Models\WeightLog;
 
 class User extends Authenticatable
 {
@@ -41,4 +43,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    /**
+     * このユーザーに紐づく目標体重を取得
+     */
+    public function weightTarget()
+    {
+        return $this->hasOne(WeightTarget::class);
+    }
+
+    /**
+     * このユーザーに紐づく体重ログを複数取得
+     */
+    public function weightLogs()
+    {
+        return $this->hasMany(WeightLog::class);
+    }
+
 }
